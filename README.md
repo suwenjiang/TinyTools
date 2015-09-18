@@ -9,4 +9,4 @@ this script used to resize pictures in a specific directory and add watermark
 
 + add resize function
 + add watermark function
--------------------------------
+=====update:0918=====
