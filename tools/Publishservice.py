@@ -185,8 +185,6 @@ class publishServices:
 
                    except Exception,msg:
                         print msg
-
-
                else:
                    print "++++++++WARNING:强烈建议，退出当前程序，去注册数据源。如不退出，6s后发布服务继续+++"
                    # time.sleep(10)
