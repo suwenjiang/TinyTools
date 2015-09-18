@@ -6,5 +6,7 @@ a batch of scripts written in python to manager the arcgis for server
 this script used to resize pictures in a specific directory and add watermark
 
 =====update:0918=====
+
 + add resize function
++ add watermark function
 ================
