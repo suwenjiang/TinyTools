@@ -11,6 +11,9 @@ this script used to resize pictures in a specific directory and add watermark
 + add watermark function
 
 ## log_format_tool
+~upate:2015_12_03
++ support chinese character
+
 ~update:2015_10_13
 
 + rename the log_classification to log_format_tool
@@ -18,4 +21,5 @@ this script used to resize pictures in a specific directory and add watermark
 + add command option
 
 + can be published
-tess
+
+

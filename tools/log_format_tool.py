@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+#-*- coding:gbk -*-
 from xlwt import Workbook, Style, Formula
 import re
 import os
@@ -120,7 +120,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     if os.path.isdir(args.f):
-        logfiles = get_logfile_in_dir(args.f.decode('utf-8'))
+        logfiles = get_logfile_in_dir(args.f)
         main(logfiles,args.f)
         print "formatted result created"
     elif '.log' in args.f:
