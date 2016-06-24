@@ -7,7 +7,6 @@ import sys
 
 import getpass
 __author__ = 'jiangmb'
-
 from arcpy import mapping
 import xml.dom.minidom as DOM
 import os
@@ -15,7 +14,6 @@ import tempfile
 import argparse
 class CreateSddraft:
     def CreateSddraft(self,mapDocPath,con,serviceName,copy_data_to_server=True,folder=None):
-
         """
         :param mapDocPath: mxd path
         :param con: arcgis server connection file

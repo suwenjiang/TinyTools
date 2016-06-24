@@ -44,17 +44,18 @@ def get_imag_file_in_folder(path):
     list_imge=[]
     for root,dirname, files in os.walk(path):
          for file in files:
-
              if os.path.splitext(file)[1] in image_format:
                 image_file=os.path.join(root,file)
                 list_imge.append(image_file)
          return list_imge
+    if  list_imge==[]:
+        print "can't find any image file"
 
 
 if __name__ == '__main__':
     # if len(sys.argv) < 3:
     #     sys.exit('Usage: %s <input-image> <text> <output-image> ' \
     #              '<angle> <opacity> ' % os.path.basename(sys.argv[0]))
-    imsglist=get_imag_file_in_folder('D:\Gallery\gallery\BathPublishService')
+    imsglist=get_imag_file_in_folder('D:\Gallery\gallery\deleteCache')
     for i in imsglist:
-     add_watermark(i,'swj.me')
+        add_watermark(i,' ')
