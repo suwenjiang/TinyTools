@@ -1,5 +1,5 @@
-# AGS_Server_admin_toolbox
-a batch of scripts written in python to manager the arcgis for server
+# TinyTools
+a batch of scripts written in python to save personal life..
 
 
 ## submitUrlsToBaidu.py
@@ -12,16 +12,18 @@ a batch of scripts written in python to manager the arcgis for server
 
 this script used to resize pictures in a specific directory and add watermark
 
-~update:0918
+update:0918
 
 + add resize function
 + add watermark function
 
 ## log_format_tool
-~upate:2015_12_03
+Format the lof fils for ArcGIS For Server, portal etc.
+
+upate:2015_12_03
 + support chinese character
 
-~update:2015_10_13
+update:2015_10_13
 
 + rename the log_classification to log_format_tool
 
@@ -30,3 +32,17 @@ this script used to resize pictures in a specific directory and add watermark
 + can be published
 
 
+## ximalaya
+
+update: 2018_05_11
+
+Using the python scrapy to download the audio from ximalaya.
+
+please note to change the hardcoded Urls and paths into your own local ones in the script. 
+
+can run the tool with:
+
+``` python
+python begin.py
+
+```
