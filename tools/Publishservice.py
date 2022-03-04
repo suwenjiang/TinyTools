@@ -77,11 +77,11 @@ class CreateContectionFile(object):
                                                            "SAVE_USERNAME"
                                                            )
 
-            print "++++++++INFO:Á´½ÓÎÄ¼þ´´½¨³É¹¦++++++++"
+            print ("++++++++INFO:ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½++++++++")
 
             return connection_file_path
-        except Exception, msg:
-            print msg
+        except Exception as msg:
+            print (msg)
 
     #
     @property
@@ -139,16 +139,16 @@ class CreateSddraft:
 class publishServices:
 
     def checkfileValidation(self,mxdLists):
-        print "++++++++INFO:¿ªÊ¼¼ì²éÎÄµµµÄÓÐÐ§ÐÔ++++++++"
+        print ("++++++++INFO:ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½++++++++")
         file_to_be_published=[]
         for file in mxdLists:
             mxd=mapping.MapDocument(file)
             brknlist=mapping.ListBrokenDataSources(mxd)
             if not len(brknlist)==0:
-                print "++++++++ERROR:µØÍ¼ÎÄµµ,"+os.path.split(file)[1]+"Ëð»µ£¬ÎÞ·¨·¢²¼·þÎñ++++++++"
+                print ("++++++++ERROR:ï¿½ï¿½Í¼ï¿½Äµï¿½,"+os.path.split(file)[1]+"ï¿½ð»µ£ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½++++++++")
             else:
                 file_to_be_published.append(file)
-        print "++++++++INFO:µØÍ¼ÎÄµµÓÐÐ§ÐÔ¼ì²éÍê±Ï++++++"
+        print ("++++++++INFO:ï¿½ï¿½Í¼ï¿½Äµï¿½ï¿½ï¿½Ð§ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½++++++")
         return file_to_be_published
 
 
@@ -159,49 +159,49 @@ class publishServices:
             serviceslist=[]
             serviceName=os.path.splitext(os.path.split(file)[1])[0]
 
-            print "++++++++INFO:·þÎñ_"+serviceName+"¿ªÊ¼´´½¨·þÎñ¶¨ÒåÎÄ¼þ++++++++"
+            print ("++++++++INFO:ï¿½ï¿½ï¿½ï¿½_"+serviceName+"ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½++++++++")
             clsCreateSddraft=CreateSddraft()
             sddraft=clsCreateSddraft.CreateSddraft(file,con,serviceName,copy_data_to_server,folder)
-            print "++++++++INFO:¿ªÊ¼·ÖÎö·þÎñ:"+serviceName+"++++++++"
+            print ("++++++++INFO:ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:"+serviceName+"++++++++")
             analysis = arcpy.mapping.AnalyzeForSD(sddraft)
             dirName=os.path.split(file)[0]
             if analysis['errors'] == {}:
-               print "++++++++WARNING:²»´æÔÚ´íÎó£¬µ«ÊÇÓÐÈçÏÂÌáÊ¾ÐÅÏ¢¡£ÕâÐ©ÄÚÈÝ¿ÉÄÜ»áÓ°Ïì·þÎñÐÔÄÜ+++++++"
-               print analysis['warnings']
+               print ("++++++++WARNING:ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ó£¬µï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ü»ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+++++++")
+               print (analysis['warnings'])
                if(not self.checkWarnings(analysis['warnings'])):
                    try:
                         sd=dirName+"\\"+serviceName+".sd"
                         if(os.path.exists(sd)):
                             os.remove(sd)
                         arcpy.StageService_server(sddraft, sd)
-                        print "++++++++INFO:·þÎñ:"+serviceName+"´ò°ü³É¹¦+++++++"
+                        print ("++++++++INFO:ï¿½ï¿½ï¿½ï¿½:"+serviceName+"ï¿½ï¿½ï¿½ï¿½É¹ï¿½+++++++")
                         arcpy.UploadServiceDefinition_server(sd, con,in_cluster=clusterName)
-                        print "++++++++INFO:·þÎñ:"+str(serviceName)+"·¢²¼³É¹¦++++++"
+                        print ("++++++++INFO:ï¿½ï¿½ï¿½ï¿½:"+str(serviceName)+"ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½++++++")
                         os.remove(sd)
-                        ####Í£Ö¹·þÎñ
+                        ####Í£Ö¹ï¿½ï¿½ï¿½ï¿½
 
 
                    except Exception,msg:
                         print msg
                else:
-                   print "++++++++WARNING:Ç¿ÁÒ½¨Òé£¬ÍË³öµ±Ç°³ÌÐò£¬È¥×¢²áÊý¾ÝÔ´¡£Èç²»ÍË³ö£¬6sºó·¢²¼·þÎñ¼ÌÐø+++"
+                   print ("++++++++WARNING:Ç¿ï¿½Ò½ï¿½ï¿½é£¬ï¿½Ë³ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½È¥×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ç²»ï¿½Ë³ï¿½ï¿½ï¿½6sï¿½ó·¢²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+++")
                    # time.sleep(10)
                    try:
                     sd=dirName+"\\"+serviceName+".sd"
                     if(os.path.exists(sd)):
                         os.remove(sd)
                     arcpy.StageService_server(sddraft, sd)
-                    print "++++++++INFO:´ò°ü³É¹¦++++++++"
+                    print ("++++++++INFO:ï¿½ï¿½ï¿½ï¿½É¹ï¿½++++++++")
                     arcpy.UploadServiceDefinition_server(sd, con,in_cluster=clusterName)
-                    print "++++++++INFO:"+serviceName+"·¢²¼³É¹¦+++++++"
+                    print ("++++++++INFO:"+serviceName+"ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½+++++++")
                     os.remove(sd)
-                   except Exception,msg:
-                    print msg
+                   except Exception as msg:
+                    print (msg)
 
             else:
-                print '++++++++ERROR:´æÔÚÈçÏÂ´íÎó:'+analysis['errors']+'++++++++'
+                print ('++++++++ERROR:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½:'+analysis['errors']+'++++++++')
 
-                #ÎåÃëºóÍË³ö¿ØÖÆÌ¨
+                #ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨
                 time.sleep(5)
                 sys.exit(1)
 
@@ -209,16 +209,16 @@ class publishServices:
     def  checkWarnings(self,warnings):
         for warning in warnings:
             if warning[1]==24011:
-                print "++++++++µ±Ç°Êý¾ÝÎ»ÖÃÃ»ÓÐ×¢²á£¬Êý¾Ý»á¿½±´µ½·þÎñÆ÷ÉÏ,¿½±´¹ý³Ì»áÓ°Ïì·¢²¼ËÙ¶È+++++++"
+                print ("++++++++ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Ã»ï¿½ï¿½×¢ï¿½á£¬ï¿½ï¿½ï¿½Ý»á¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì»ï¿½Ó°ï¿½ì·¢ï¿½ï¿½ï¿½Ù¶ï¿½+++++++")
                 return True
         return False
 
     def GetMxFileList(self,filePath):
-            #ÅÐ¶ÏÎÄ¼þ¼ÐÊÇ·ñ´æÔÚ
+            #ï¿½Ð¶ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
         if not os.path.exists(filePath):
-            print "++++++++ERROR:ÎÄ¼þ¼Ð²»´æÔÚ+++++++"
+            print ("++++++++ERROR:ï¿½Ä¼ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½+++++++")
             sys.exit(1)
-        #»ñÈ¡ÎÄ¼þ¼ÐÖÐµÄËùÓÐmxdÎÄ¼þ
+        #ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½mxdï¿½Ä¼ï¿½
         list=[]
         for root,dirname, files in os.walk(filePath):
 
@@ -230,16 +230,16 @@ class publishServices:
                         list.append(mxdfile)
 
         if list==[]:
-          print "++++++++INFO:ÔÚµ±Ç°Ä¿Â¼ÏÂ²»´æÔÚÓÐÐ§µÄmxdÎÄ¼þ++++++++"
+          print ("++++++++INFO:ï¿½Úµï¿½Ç°Ä¿Â¼ï¿½Â²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½mxdï¿½Ä¼ï¿½++++++++")
           time.sleep(5)
           sys.exit(1)
         return list
 def GetInfo():
 
-    server = raw_input("ÇëÊäÈëGIS Server IP:")
-    userName=raw_input("ÇëÊäÈëÕ¾µã¹ÜÀíÔ±ÓÃ»§Ãû:")
-    passWord=getpass.getpass("ÇëÊäÈëÕ¾µã¹ÜÀíÔ±ÃÜÂë:")
-    port=raw_input("ÇëÊäÈë¶Ë¿ÚºÅ(6080)£º")
+    server = raw_input("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½GIS Server IP:")
+    userName=raw_input("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ã»ï¿½ï¿½ï¿½:")
+    passWord=getpass.getpass("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½:")
+    port=raw_input("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿Úºï¿½(6080)ï¿½ï¿½")
 
     logDict={'server':server,
             'userName':userName,
@@ -248,25 +248,25 @@ def GetInfo():
 
     contionfile=os.path.join(tempfile.mkdtemp(),'server.ags')
 
-    #µ÷ÓÃ´´½¨Á´½ÓÎÄ¼þµÄ²ÎÊý
+    #ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ä²ï¿½ï¿½ï¿½
     instace=CreateContectionFile()
     instace.filePath=contionfile
     instace.loginInfo=logDict
     instace.CreateContectionFile()
     if(os.path.isfile(contionfile)==False):
-        print "++++++++ERROR:´´½¨Á´½ÓÊ§°Ü++++++++"
+        print ("++++++++ERROR:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½++++++++")
         time.sleep(5)
         sys.exit(1)
 
-    #ÊäÈëmxdÎÄ¼þµÄÎÄ¼þ¼Ðe
-    mxdDir=raw_input('ÇëÊäÈëmxdËùÔÚÎÄ¼þ¼Ð:')
+    #ï¿½ï¿½ï¿½ï¿½mxdï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½e
+    mxdDir=raw_input('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mxdï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½:')
     clsPublishservice=publishServices()
     fileList=clsPublishservice.GetMxFileList(mxdDir)
 
-    servic_dir=raw_input("ÇëÖ¸¶¨·¢²¼µ½·þÎñÆ÷Ä¿Â¼£¬Ä¬ÈÏÎªroot¡£Ê¹ÓÃÄ¬ÈÏÖµÖ±½Ó»Ø³µ:")
+    servic_dir=raw_input("ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½Ä¬ï¿½ï¿½Îªrootï¿½ï¿½Ê¹ï¿½ï¿½Ä¬ï¿½ï¿½ÖµÖ±ï¿½Ó»Ø³ï¿½:")
     if len(servic_dir)==0:
         servic_dir==None
-    clusterName=raw_input("ÇëÖ¸¶¨·¢²¼µ½¼¯Èº£¬Ä¬ÈÏÎªcluster¡£ÈçÃ»ÓÐ¼¯Èº»·¾³£¬ÇëÖ±½Ó»Ø³µ:")
+    clusterName=raw_input("ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Èºï¿½ï¿½Ä¬ï¿½ï¿½Îªclusterï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð¼ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó»Ø³ï¿½:")
     if len(clusterName)==0:
         clusterName='default'
     clsPublishservice=publishServices()

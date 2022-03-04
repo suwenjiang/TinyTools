@@ -11,7 +11,7 @@ def get_formatted_in_a_file(path):
             allmsg = file.read()
 
             if "</" not in allmsg and '>' not in allmsg:
-                print "unable to retrieve the log file"
+                print ("unable to retrieve the log file")
                 return []
             text0 = allmsg.split('</')[0].split('>')
             all_formatted_msg = []
@@ -27,8 +27,8 @@ def get_formatted_in_a_file(path):
                 formatted_msg2.append(msg2[1])
                 all_formatted_msg.append(formatted_msg2)
         return sorted(all_formatted_msg, key=lambda item: item[1])
-    except Exception, msg:
-        print msg
+    except Exception as msg:
+        print (msg)
         return []
 
 
@@ -59,8 +59,8 @@ def Write_To_excel(book, sheetName, sorted_list):
                 new_row.write(column_count, val)
 
             row_count = row_count + 1
-    except Exception, msg:
-        print "write to excel" + msg
+    except Exception as msg:
+        print ("write to excel" + msg)
 
 
 def get_logfile_in_dir(log_path):
@@ -93,7 +93,7 @@ def main(logfiles,dir_path):
         row0.set_style(tall_style)
         sheet0.col(1).width = 256 * 50
         for item in logfiles:
-            print "processed file:" + os.path.split(item)[1]
+            print ("processed file:" + os.path.split(item)[1])
             new_row = sheet0.row(logfiles.index(item) + 1)
             new_row.write(0, logfiles.index(item) + 1)
 
@@ -109,7 +109,7 @@ def main(logfiles,dir_path):
         save_path = os.path.join(dir_path, 'Aresult.xls')
         book.save(save_path)
     else:
-        print "the dirtory doesn't contains any log file"
+        print ("the dirtory doesn't contains any log file")
 
 
 if __name__ == '__main__':
@@ -122,13 +122,13 @@ if __name__ == '__main__':
     if os.path.isdir(args.f):
         logfiles = get_logfile_in_dir(args.f)
         main(logfiles,args.f)
-        print "formatted result created"
+        print ("formatted result created")
     elif '.log' in args.f:
         logfiles.append(args.f)
         main(logfiles,os.path.split(args.f)[0])
-        print "formatted result created"
+        print ("formatted result created")
     else:
-        print "please input a valid log directory or file"
+        print ("please input a valid log directory or file")
         sys.exit()
 
 

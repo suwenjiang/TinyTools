@@ -13,7 +13,7 @@ if sitemap.status_code==200:
     urls = set(urls)  # 先去重
     print("%s url need to submit " % len(urls))
     data = "\n".join(urls)
-    print data
+    print (data)
     url = "your own baidu url"
 
-    print  requests.post(url, data=data).text
+    print  (requests.post(url, data=data).text)

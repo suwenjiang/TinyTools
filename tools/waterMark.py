@@ -9,7 +9,7 @@ def resize_image(img):
 
     wpercent = (basewidth / float(img.size[0]))
     hsize = int((float(img.size[1]) * float(wpercent)))
-    print hsize
+    print (hsize)
     img = img.resize((basewidth, hsize), Image.ANTIALIAS)
     # img.save('d:\\watermark.png')
     return img
@@ -49,7 +49,7 @@ def get_imag_file_in_folder(path):
                 list_imge.append(image_file)
          return list_imge
     if  list_imge==[]:
-        print "can't find any image file"
+        print ("can't find any image file")
 
 
 if __name__ == '__main__':

@@ -12,7 +12,7 @@ page_content=urllib2.urlopen(url)
 
 
 
-print page_content
+print (page_content)
 
 
 

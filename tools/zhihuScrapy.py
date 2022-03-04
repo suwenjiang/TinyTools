@@ -14,7 +14,7 @@ while True:
         r = requests.get('https://www.zhihu.com'+next_page_url)
 
         next_page_url=r.json()['paging']['next']
-        print next_page_url
+        print (next_page_url)
         if len(next_page_url)!=0:
                 content=r.json()['htmls']
                 html_doc=''.join(content)
@@ -30,6 +30,6 @@ while True:
                         user_info['followers']=link.find_all('a')[4].strong.string
                         users_info_list.append(user_info)
         else:
-                print users_info_list
+                print (users_info_list)
                 break
 
