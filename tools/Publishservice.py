@@ -181,8 +181,8 @@ class publishServices:
                         ####ֹͣ����
 
 
-                   except Exception,msg:
-                        print msg
+                   except Exception as msg:
+                        print (msg)
                else:
                    print ("++++++++WARNING:ǿ�ҽ��飬�˳���ǰ����ȥע������Դ���粻�˳���6s�󷢲��������+++")
                    # time.sleep(10)
