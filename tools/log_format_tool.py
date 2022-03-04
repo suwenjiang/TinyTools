@@ -75,8 +75,8 @@ def get_logfile_in_dir(log_path):
                     if os.path.getsize(filePath) != 0:
                         fileslList.append(filePath)
         return fileslList
-    except IOError, msg:
-        print msg
+    except IOError as msg:
+        print (msg)
 
 
 def main(logfiles,dir_path):
