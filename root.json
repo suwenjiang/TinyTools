@@ -1,0 +1,45 @@
+{
+  "glyphs": "https://tiles.arcgis.com/tiles/wXxzXUPXryxeZXDC/arcgis/rest/services/Mapillary_Vector_Tiles/VectorTileServer/resources/styles/../fonts/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "mapillary-sequence",
+      "type": "line",
+      "source": "mapillary",
+      "source-layer": "sequence",
+      "paint": {
+        "line-color": "#05CB63",
+        "line-width": 1
+      }
+    },
+    {
+      "id": "mapillary-image",
+      "type": "circle",
+      "source": "mapillary",
+      "source-layer": "image",
+      "paint": {
+        "circle-color": "#05CB63",
+        "circle-radius": 5
+      }
+    },
+    {
+      "id": "mapillary-overview",
+      "type": "circle",
+      "source": "mapillary",
+      "source-layer": "overview",
+      "paint": {
+        "circle-color": "#05CB63",
+        "circle-radius": 5
+      }
+    }
+  ],
+  "sources": {
+    "mapillary": {
+      "maxzoom": 15,
+      "tiles": [
+        "https://tiles.mapillary.com/maps/vtp/mly1_public/2/{z}/{x}/{y}"
+      ],
+      "type": "vector"
+    }
+  },
+  "sprite": "https://tiles.arcgis.com/tiles/wXxzXUPXryxeZXDC/arcgis/rest/services/Mapillary_Vector_Tiles/VectorTileServer/resources/styles/../sprites/sprite"
+}
